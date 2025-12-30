@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     //The current position of the player
     private float currentX;
 
+    //Boolean to check if the player is on the ground
+    bool isGrounded;
+
 
 
     // Start is called before the first frame update
@@ -49,12 +52,11 @@ public class PlayerMovement : MonoBehaviour
         //Constantly moving the player forward
         rb.velocity = new Vector3(horizontalInput * sideSpeed, rb.velocity.y, velocity);
 
+
     }
 
     void PlayerJump()
     {
-        //Checking if the player is on the ground
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
 
         //Checking for jump input
         bool JumpInput = Input.GetKeyDown(KeyCode.Space);
@@ -64,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
         {
             //Applying the jump force
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            isGrounded = false;
         }
 
 
@@ -72,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
     //Collision detection
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ground_1")
+        {
+            isGrounded = true;
+        }
+
+
 
     }
 
