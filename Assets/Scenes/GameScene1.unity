@@ -526,4 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1569688918}
-  velocity: 12
+  velocity: 1
+  jumpForce: 10
+  sideSpeed: 5
+  SideDistance: 0

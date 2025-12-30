@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     //Velocity of the player
     public float velocity;
 
+    //Force of the jump
+    public float jumpForce;
+
     //The speed at which the player can move left and right
     public float sideSpeed;
 
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     //The current position of the player
     private float currentX;
+
 
 
     // Start is called before the first frame update
@@ -31,15 +35,44 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        //Giving the player a constant forward velocity
-        rb.velocity = new Vector3(0, 0, velocity);
+        //Movement
+        PlayerMove();
+        PlayerJump();
 
     }
 
     void PlayerMove()
     {
         //Getting the input from the player
-        
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        //Constantly moving the player forward
+        rb.velocity = new Vector3(horizontalInput * sideSpeed, rb.velocity.y, velocity);
+
+    }
+
+    void PlayerJump()
+    {
+        //Checking if the player is on the ground
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+
+        //Checking for jump input
+        bool JumpInput = Input.GetKeyDown(KeyCode.Space);
+
+        //Check if the player is on ground and the jump button is pressed
+        if(isGrounded && JumpInput)
+        {
+            //Applying the jump force
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+
+    }
+
+    //Collision detection
+    void OnCollisionEnter(Collision collision)
+    {
+
     }
 
 }
