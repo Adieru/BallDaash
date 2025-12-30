@@ -11,6 +11,15 @@ public class PlayerMovement : MonoBehaviour
     //Velocity of the player
     public float velocity;
 
+    //The speed at which the player can move left and right
+    public float sideSpeed;
+
+    //The maximum distance the player can move left and right
+    public float SideDistance;
+
+    //The current position of the player
+    private float currentX;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,4 +35,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(0, 0, velocity);
 
     }
+
+    void PlayerMove()
+    {
+        //Getting the input from the player
+        
+    }
+
 }
