@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class CoinManagement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Coin count
+    private int coinCount = 0;
+
+
+
+
     void Start()
     {
         
@@ -13,6 +18,19 @@ public class CoinManagement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Coin")
+        {
+            //Increment coin count
+            coinCount++;
+
+            //Destroy coin object
+            Destroy(collision.gameObject);
+
+        }
     }
 }
