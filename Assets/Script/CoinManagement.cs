@@ -1,36 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CoinManagement : MonoBehaviour
 {
     //Coin count
     private int coinCount = 0;
 
+    //Text for the coin count display
+    public TextMeshProUGUI coinText;
 
-
-
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "Coin")
+        //Check if the object collided with is a coin
+        if (other.gameObject.CompareTag("Coin"))
         {
             //Increment coin count
             coinCount++;
 
-            //Destroy coin object
-            Destroy(collision.gameObject);
+            //Deactivate the coin object
+            other.gameObject.SetActive(false);
+
+            //Display the updated coin count
+            coinText.text = "Coin: " + coinCount.ToString();
 
         }
     }
+
 }

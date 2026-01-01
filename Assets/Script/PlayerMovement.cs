@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -32,12 +34,11 @@ public class PlayerMovement : MonoBehaviour
     //Check if player has jumped
     bool jumped;
 
+    //Text for the score
+    public TextMeshProUGUI scoreText;
+    //Score
+    private int Score;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         //Movement
         PlayerMove();
         PlayerJump();
+
 
     }
 
@@ -63,6 +65,13 @@ public class PlayerMovement : MonoBehaviour
 
         //Jump check
         CheckJump();
+
+
+        //Increase speed
+        incrementSpeed();
+
+        //Score
+        ScoreKeep();
 
     }
 
@@ -106,16 +115,31 @@ public class PlayerMovement : MonoBehaviour
     //Increase speed over time
     void incrementSpeed()
     {
+        if (Distance % 50f <= 0.01f && Distance % 50f >= 0f)
+        {
+            velocity += 1;
+
+        }
 
     }
 
     //Collision detection
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground_1")
+        if (collision.gameObject.CompareTag("Ground_1"))
         {
             isGrounded = true;
         }
+
+    }
+
+
+    //Score keeping
+    void ScoreKeep()
+    {
+        Score = (int)Distance;
+
+        scoreText.text = "Score: " + Score.ToString();
 
     }
 
