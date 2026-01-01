@@ -13,6 +13,9 @@ public class CoinManagement : MonoBehaviour
     //Text for the coin count display
     public TextMeshProUGUI coinText;
 
+    //Audio source for coin collection sound
+    public AudioSource coinAudio;
+
     void OnTriggerEnter(Collider other)
     {
         //Check if the object collided with is a coin
@@ -26,6 +29,7 @@ public class CoinManagement : MonoBehaviour
 
             //Display the updated coin count
             coinText.text = "Coin: " + coinCount.ToString();
+
 
         }
     }
