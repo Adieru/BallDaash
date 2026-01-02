@@ -22,7 +22,10 @@ public class ObstacleManager : MonoBehaviour
             Debug.Log("Player hit an obstacle!");
             playerTries--;
 
+            
+
             playerMoveBack(playerTries);
+
 
 
         }
@@ -34,6 +37,8 @@ public class ObstacleManager : MonoBehaviour
         if (tries > 0)
         {
             this.transform.position = SpawnPosition;
+
+            //Slowing the player down
             this.Player.velocity = new Vector3(0, 0, InitialVel);
 
         }

@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     //The speed at which the player can move left and right
     public float sideSpeed;
 
+    //Interval for increasing vel
+    public float speedIncreaseInterval;
+
     //The distance moved by the player
     private float Distance;
 
@@ -115,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
     //Increase speed over time
     void incrementSpeed()
     {
-        if (Distance % 50f <= 0.01f && Distance % 50f >= 0f)
+        if (Distance % speedIncreaseInterval <= 0.1f && Distance % speedIncreaseInterval >= 0f)
         {
             velocity += 1;
 
