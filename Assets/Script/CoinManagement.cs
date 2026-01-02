@@ -21,11 +21,12 @@ public class CoinManagement : MonoBehaviour
         //Check if the object collided with is a coin
         if (other.gameObject.CompareTag("Coin"))
         {
-            //Increment coin count
-            coinCount++;
 
             //Deactivate the coin object
             other.gameObject.SetActive(false);
+
+            //Increment coin count
+            coinCount++;
 
             //Display the updated coin count
             coinText.text = "Coin: " + coinCount.ToString();

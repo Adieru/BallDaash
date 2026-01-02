@@ -5,12 +5,22 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    //Players position
-    Transform PlayerZ;
+    //Player
+    public Transform Player;
 
     //Offset(distance between player and camera)
-    public float offsetCam;
+    public Vector3 offsetCam;
 
+    private void Start()
+    {
+        //Initial offset calculation
+        offsetCam = Player.position - transform.position;
+    }
 
+    private void LateUpdate()
+    {
+        //Camera follow player
+        this.transform.position = Player.position - offsetCam;
+    }
 
 }
