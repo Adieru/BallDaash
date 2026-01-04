@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         //Initial offset calculation
-        offsetCam = Player.position - transform.position;
+        offsetCam = Player.position - this.transform.position;
     }
 
     private void LateUpdate()
