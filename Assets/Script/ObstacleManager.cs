@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class ObstacleManager : MonoBehaviour
 {
@@ -19,14 +20,9 @@ public class ObstacleManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Player hit an obstacle!");
             playerTries--;
 
-            
-
             playerMoveBack(playerTries);
-
-
 
         }
     }
@@ -36,16 +32,15 @@ public class ObstacleManager : MonoBehaviour
     {
         if (tries > 0)
         {
-            this.transform.position = SpawnPosition;
+            
 
-            //Slowing the player down
-            this.Player.velocity = new Vector3(0, 0, InitialVel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }
 
         else
         {
-            Debug.Log("Game Over!");
+            Debug.Log("Game Over");
         }
 
     }
