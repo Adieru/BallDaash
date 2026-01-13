@@ -10,6 +10,8 @@ public class ObstacleManager : MonoBehaviour
     public int playerTries = 3;
     public Vector3 SpawnPosition;
 
+    public bool ObstacleDmg;
+
     public float InitialVel;
 
     //Getting movement
@@ -20,9 +22,13 @@ public class ObstacleManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            playerTries--;
+            if(ObstacleDmg)
+            {
+                playerTries--;
 
-            playerMoveBack(playerTries);
+                playerMoveBack(playerTries);
+            }
+
 
         }
     }

@@ -16,7 +16,7 @@ public class NextMap : MonoBehaviour
             if (other.transform.GetSiblingIndex() == 1)
             {
                 MapHolder.GetChild(0).transform.position = MapHolder.GetChild(2).transform.position
-                                                                + new Vector3(0, 0, 150);
+                                                                + new Vector3(0, 0, 67.6f);
 
                 /*
                 coinHolder = MapHolder.GetChild(0).GetChild(0);
