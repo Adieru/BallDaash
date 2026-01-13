@@ -12,23 +12,28 @@ public class ObstacleManager : MonoBehaviour
 
     public bool ObstacleDmg;
 
+    bool hasCollided = false;
+
     public float InitialVel;
 
     //Getting movement
      public Rigidbody Player;
+
+    //Player Movment script
+    public PlayerMovement playerMvt;
 
     //Collision check for obstacles
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            if(ObstacleDmg)
+
+            if (ObstacleDmg)
             {
                 playerTries--;
 
                 playerMoveBack(playerTries);
             }
-
 
         }
     }
@@ -36,17 +41,19 @@ public class ObstacleManager : MonoBehaviour
     //Moving the player back upon hitting an obstacle
     void playerMoveBack(int tries)
     {
-        if (tries > 0)
+        if (tries <= 0)
         {
-            
+            //GameOver
+            playerMvt.HighScoreKeep();
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         }
 
         else
         {
-            Debug.Log("Game Over");
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            hasCollided = true;
         }
 
     }

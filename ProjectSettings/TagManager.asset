@@ -7,8 +7,8 @@ TagManager:
   - Ground_1
   - Coin
   - Obstacle
-  - MapPass
   - Ground
+  - ' Map'
   layers:
   - Default
   - TransparentFX

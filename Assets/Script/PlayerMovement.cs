@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
     //Score
     private int Score;
 
+    //HighScore
+    private int HighScore;
+
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -143,6 +147,26 @@ public class PlayerMovement : MonoBehaviour
         Score = (int)Distance;
 
         scoreText.text = "Score: " + Score.ToString();
+
+    }
+
+    public void HighScoreKeep()
+    {
+        //Setting Initial HighScore
+        if(!PlayerPrefs.HasKey("HighScore"))
+        {
+            HighScore = 0; 
+
+            
+        }
+
+        if(Score > HighScore)
+        {
+
+            HighScore = Score;
+        }
+
+        PlayerPrefs.SetInt("HighScore", HighScore);
 
     }
 
