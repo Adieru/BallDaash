@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private int Score;
 
     //HighScore
-    private int HighScore;
+    public int HighScore;
 
 
 
@@ -156,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
         if(!PlayerPrefs.HasKey("HighScore"))
         {
             HighScore = 0; 
-
             
         }
 
