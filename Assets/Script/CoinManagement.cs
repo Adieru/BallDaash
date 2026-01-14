@@ -8,7 +8,7 @@ using TMPro;
 public class CoinManagement : MonoBehaviour
 {
     //Coin count
-    private int coinCount = 0;
+    public int coinCount = 0;
 
     //Text for the coin count display
     public TextMeshProUGUI coinText;

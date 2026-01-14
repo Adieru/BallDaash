@@ -17,7 +17,7 @@ public class ObstacleManager : MonoBehaviour
     public float InitialVel;
 
     //Getting movement
-     public Rigidbody Player;
+    public Rigidbody Player;
 
     //Player Movment script
     public PlayerMovement playerMvt;
@@ -47,6 +47,9 @@ public class ObstacleManager : MonoBehaviour
             playerMvt.HighScoreKeep();
 
 
+            //Coin Update
+            CoinChange();
+
         }
 
         else
@@ -56,6 +59,22 @@ public class ObstacleManager : MonoBehaviour
             hasCollided = true;
         }
 
+    }
+
+    //Coins 
+    void CoinChange()
+    {
+        if(!PlayerPrefs.HasKey("Coins"))
+        {
+            PlayerPrefs.SetInt("Coins", this.GetComponent<CoinManagement>().coinCount);
+        }
+
+        else
+        {
+            int currentCoins = PlayerPrefs.GetInt("Coins");
+            currentCoins += this.GetComponent<CoinManagement>().coinCount;
+            PlayerPrefs.SetInt("Coins", currentCoins);
+        }
     }
 
 }

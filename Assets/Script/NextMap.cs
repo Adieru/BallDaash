@@ -11,15 +11,18 @@ public class NextMap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Map"))
-        {
-            Debug.Log(other.transform.parent.name);
-            Debug.Log(other.transform.name);
+        
+            Debug.Log(this.transform.parent.name);
+            Debug.Log(this.transform.name);
+        Debug.Log(this.transform.parent.parent.name);
+        Debug.Log(this.transform.parent.GetSiblingIndex());
 
-            if (other.transform.parent.GetSiblingIndex() == 1)
+            if (this.transform.parent.GetSiblingIndex() == 1)
             {
                 MapHolder.GetChild(0).transform.position = MapHolder.GetChild(2).transform.position
                                                                 + new Vector3(0, 0, 150f);
+            Debug.Log(MapHolder.GetChild(0).transform.position);
+            Debug.Log(MapHolder.GetChild(2).transform.position);
 
                 /*
                 coinHolder = MapHolder.GetChild(0).GetChild(0);
@@ -35,7 +38,6 @@ public class NextMap : MonoBehaviour
 
 
             }
-        }
     }
-
+ 
 }
