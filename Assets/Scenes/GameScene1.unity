@@ -7601,7 +7601,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3527597307091337566, guid: 8d9df8c724048f943b78f1c9c91949e0, type: 3}
       propertyPath: velocity
-      value: 40
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3527597307091337566, guid: 8d9df8c724048f943b78f1c9c91949e0, type: 3}
       propertyPath: scoreText
