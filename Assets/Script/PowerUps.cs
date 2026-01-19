@@ -29,7 +29,7 @@ public class PowerUps : MonoBehaviour
 
     {
 
-        obstacles = GameObject.FindGameObjectsWithTag("Obstacles");
+        obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         BecomeInvis(true, 10);
 
 
